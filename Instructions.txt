@@ -1,0 +1,60 @@
+On Raspberry Pi:
+
+Open terminal and edit the network interfaces file
+Assuming nano text editor is installed use:
+sudo nano /etc/dhcpcd.conf
+Add these lines at the end:
+interface eth0
+static ip_address=192.168.1.100/24
+(We can use a different ip if needed.)
+Save and exit
+Reboot
+
+On Laptop:
+
+Go to network settings
+Set a static IP for the Ethernet connection (192.168.1.101)
+Subnet mask: 255.255.255.0 this matches the IP
+
+
+3. Software Setup
+On Raspberry Pi:
+Create a new file receive_commands.py
+Type out the receive_commands file 
+Save and exit
+
+On Laptop:
+
+Use send_commands.py
+Ensure the IP address in the code matches your Raspberry Pi's IP (192.168.1.100)
+
+4. Running the Scripts
+On Raspberry Pi:
+Open terminal
+Navigate to the directory containing receive_commands.py
+Run:
+python3 receive_commands.py
+
+On Laptop:
+
+Open command prompt/terminal
+Navigate to the directory containing send_commands.py
+Run:
+python send_commands.py
+
+
+5. Testing
+
+On your laptop, you should see a prompt to enter a command
+Type a test command
+Press Enter
+Check the Raspberry Pi terminal - you should see the received command
+Check your laptop - you should see the response from the Raspberry Pi
+Try sending multiple commands to ensure consistent communication
+
+6. Troubleshooting
+
+If connection fails, ensure both devices are on the same subnet
+Check if any firewalls are blocking the connection
+Verify the Ethernet cable is functioning properly
+Ensure the correct IP addresses and port numbers are used in both scripts
